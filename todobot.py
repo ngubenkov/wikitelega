@@ -1,11 +1,8 @@
 import json
 import requests
 import time
-from wikitelega.dbhelper import DBHelper
-
-#https://api.telegram.org/bot773633629:AAHAy4gQHwEmZmR4oKiiHzvKFQCAYNhk_gg
-
-
+import urllib
+from dbhelper import DBHelper
 
 db = DBHelper()
 
