@@ -1,13 +1,38 @@
 import wikipediaapi
+import requests
 
-wiki_wiki = wikipediaapi.Wikipedia('en')
+def return_article(name):
+        if(name == "Python programing" or name == "Python Language"):
+                return("is okay")
 
-page_py = wiki_wiki.page('Python_(programming_language)')
-#print("Page - Summary: %s" % page_py.summary)
-wiki_wiki = wikipediaapi.Wikipedia(
-        language='en',
-        extract_format=wikipediaapi.ExtractFormat.WIKI
-)
+        wiki_wiki = wikipediaapi.Wikipedia('en')
+        page_py = wiki_wiki.page(name)
+        #print(page_py.sections[0])
+        #print(page_py.text[:page_py.text.index("\n")] )
+        print_sections(page_py.sections)
+        return(page_py.text[:page_py.text.index("\n")])
+       # return(page_py.sections)
 
-p_wiki = wiki_wiki.page("Python (programming language)")
-print(p_wiki.text)
+def print_sections(sections, level=0):
+
+        for s in sections:
+
+                print("%s " % ( s.title))
+                print_sections(s.sections, level + 1)
+
+
+
+
+
+
+
+def wiki_search(name):
+        url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrsearch='{}'".format(name)
+        response = requests.get(url)
+        content = response.content.decode("utf8")
+        print(content)
+
+
+#result = requests.get('https://en.wikipedia.org/w/api.php', params=req).json()
+
+print(return_article("Python language") )
