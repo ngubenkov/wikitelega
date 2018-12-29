@@ -2,15 +2,47 @@ import wikipediaapi
 import requests
 
 def return_article(name):
-        #if(name == "Python programing" or name == "Python Language"): return("is okay")
+        print(name)
 
-        wiki_wiki = wikipediaapi.Wikipedia('en')
-        page_py = wiki_wiki.page(name)
-        #print(page_py.sections[0])
-        #print(page_py.text[:page_py.text.index("\n")] )
-        sections = return_sections(page_py.sections)
-        return(page_py.text, sections)
-       # return(page_py.sections)
+        if(isEnglish(name)):
+                # error requests enter here
+                if( name == "starbacks"):
+                        return("Stop", ["none"])
+
+                elif (name == "/start"): #welcome message
+                        return("/start", ["none"])
+
+                elif(name == "Губенков" or name == "Gubenkov pidaruga"):  #joke for pasha
+                        return("Pasha", ["none"])
+
+                else: # russian request
+                        wiki_wiki = wikipediaapi.Wikipedia('en')
+                        page_py = wiki_wiki.page(name)
+                        sections = return_sections(page_py.sections)
+                        if("may refer to:" in page_py.text):
+                                print("REFER TO")
+                        return(page_py.text, sections)
+
+        else: #for russian language
+                wiki_wiki = wikipediaapi.Wikipedia('ru')
+                page_py = wiki_wiki.page(name)
+                # print(page_py.sections[0])
+                # print(page_py.text[:page_py.text.index("\n")] )
+                sections = return_sections(page_py.sections)
+                if ("may refer to:" in page_py.text):
+                        print("REFER TO")
+                return (page_py.text, sections)
+
+# check if entered english request
+def isEnglish(s):
+    try:
+        s.encode(encoding='utf-8').decode('ascii')
+    except UnicodeDecodeError:
+        return False
+    else:
+        return True
+
+
 
 def return_sections(sections, level=0, section = []):
         section = []
@@ -22,16 +54,37 @@ def return_sections(sections, level=0, section = []):
         return section
 
 def wiki_search(name):
+
         url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrsearch='{}'".format(name)
         response = requests.get(url)
         content = response.content.decode("utf8")
         print(content)
 
+def find(s, ch):
+    return [i for i, ltr in enumerate(s) if ltr == ch]
 
 #result = requests.get('https://en.wikipedia.org/w/api.php', params=req).json()
 
-articleText, sections = return_article("Russia")
-print(articleText[:articleText.index(sections[0])])
-#print(articleText)
-print(sections)
+
+#
+#articleToPrint = articleText[:articleText.index(sections[0])]
+#
+# listOfEndLines = find(articleToPrint, '\n')
+# print(listOfEndLines)
+#
+# for i in range(len(listOfEndLines)-1, 0, -1):
+#         if listOfEndLines[i] < 4096:
+#                 print( articleToPrint[0:listOfEndLines[i]])
+#                 print("#############")
+#                 print(articleToPrint[listOfEndLines[i]:] )
+#                 break
+
+#4096
+#print("22222222222")
+#print(articleToPrint)
+
+
+# print(sections)
+
+
 

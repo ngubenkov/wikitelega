@@ -65,12 +65,48 @@ def handle_message(updates):
     for update in updates["result"]:
         chat = update["message"]["chat"]["id"]
        # print(return_article(update["message"]["text"]))
-        print("Start")
         print(update["message"]["text"])
-        send_message(return_article(update["message"]["text"]), chat)
-        print("Done")
-        remove_keyboard(updates)
+        message, sections = return_article(update["message"]["text"])
 
+        if(message == "Stop"): # some unexpected shit handler
+            print("HERE")
+            send_message("Shit happened", chat)
+            break
+
+        elif(message == "Language barier"):
+            send_message("Please use only english characters.(Will be update soon)", chat)
+            print("Language barier")
+            break
+        elif(message == "/start"):
+            send_message("Welcome to wiki chatbot. Here you can search for articles from Wikipedia,"
+                               " just send a request of what are you looking for", chat)
+            print("Welcome message")
+
+        #joke for pasha
+        elif (message == "Pasha"):
+            print("Pasha's case")
+            send_message("возможно вы имели ввиду Строчков павел из города Златоуст любит когда его долбят в анус", chat)
+            print("Pasha handled")
+        else:
+            print("everything is fine")
+            print("sections : {}".format(sections))
+            print("message length : {}".format(len(message[:message.index(sections[0])])  )   )
+            listOfendLines = find(message, '\n')
+            message = message[:message.index(sections[0])] # get only first part of page before first section
+
+
+            if listOfendLines[len(listOfendLines) - 1] > 4096: # if article text is greate than 4096 split on two messages
+                for i in range(len(listOfendLines) - 1, 0, -1):
+                    if listOfendLines[i] < 4096:
+                        send_message(message[0:listOfendLines[i]], chat)
+                        send_message(message[listOfendLines[i]:], chat)
+                        break
+            else:
+                send_message(message[:message.index(sections[0])], chat)
+            remove_keyboard(updates)
+
+def find(s, ch): # find all char in string
+    return [i for i, ltr in enumerate(s) if ltr == ch]
 
 def remove_keyboard(updates):
     for update in updates["result"]:
