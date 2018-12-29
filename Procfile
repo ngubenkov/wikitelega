@@ -1,1 +1,1 @@
-python wikitelega.py
+worker: python wikitelega.py
