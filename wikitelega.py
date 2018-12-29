@@ -10,6 +10,10 @@ db = DBHelper()
 TOKEN = "773633629:AAHAy4gQHwEmZmR4oKiiHzvKFQCAYNhk_gg"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
+#TODO:
+# normalize if size of message is too huge, now it's sending strange number of times
+# apply keyboard search
+
 
 def get_url(url): # connect to bot
     response = requests.get(url)
@@ -65,9 +69,9 @@ def handle_message(updates):
     for update in updates["result"]:
         chat = update["message"]["chat"]["id"]
        # print(return_article(update["message"]["text"]))
-        print(update["message"]["text"])
+       # print(update["message"]["text"])
         message, sections = return_article(update["message"]["text"])
-
+        keyboard = build_keyboard("")
         if(message == "Stop"): # some unexpected shit handler
             print("HERE")
             send_message("Shit happened", chat)
@@ -93,16 +97,16 @@ def handle_message(updates):
             print("message length : {}".format(len(message[:message.index(sections[0])])  )   )
             listOfendLines = find(message, '\n')
             message = message[:message.index(sections[0])] # get only first part of page before first section
-
+            keyboard = build_keyboard(sections)
 
             if listOfendLines[len(listOfendLines) - 1] > 4096: # if article text is greate than 4096 split on two messages
                 for i in range(len(listOfendLines) - 1, 0, -1):
                     if listOfendLines[i] < 4096:
                         send_message(message[0:listOfendLines[i]], chat)
-                        send_message(message[listOfendLines[i]:], chat)
-                        break
+                        send_message(message[listOfendLines[i]:], chat, keyboard)
+
             else:
-                send_message(message[:message.index(sections[0])], chat)
+                send_message(message[:message.index(sections[0])], chat, keyboard)
             remove_keyboard(updates)
 
 def find(s, ch): # find all char in string
