@@ -72,26 +72,33 @@ def handle_message(updates):
        # print(update["message"]["text"])
         message, sections = return_article(update["message"]["text"])
         keyboard = build_keyboard("")
+
         if(message == "Stop"): # some unexpected shit handler
             print("HERE")
             send_message("Shit happened", chat)
             break
 
-        elif(message == "Language barier"):
+        elif(message == "Language barier"): # language problem(not sure if it will happend anymore)
             send_message("Please use only english characters.(Will be update soon)", chat)
             print("Language barier")
             break
-        elif(message == "/start"):
+
+        elif(message == "/start"): # start using
             send_message("Welcome to wiki chatbot. Here you can search for articles from Wikipedia,"
                                " just send a request of what are you looking for", chat)
             print("Welcome message")
 
-        #joke for pasha
-        elif (message == "Pasha"):
+        elif(message == "/refer"): # many possible articles (REFER TO case)
+            keyboard = build_keyboard(sections)
+            send_message("May refer to : {}".format(sections), chat, keyboard)
+
+
+        elif (message == "Pasha"): # Pasha's case
             print("Pasha's case")
             send_message("возможно вы имели ввиду Строчков павел из города Златоуст любит когда его долбят в анус", chat)
             print("Pasha handled")
-        else:
+
+        else: # normal case
             print("everything is fine")
             print("sections : {}".format(sections))
             print("message length : {}".format(len(message[:message.index(sections[0])])  )   )
@@ -99,6 +106,8 @@ def handle_message(updates):
             message = message[:message.index(sections[0])] # get only first part of page before first section
             keyboard = build_keyboard(sections)
 
+
+            # porblem is here prints too many times
             if listOfendLines[len(listOfendLines) - 1] > 4096: # if article text is greate than 4096 split on two messages
                 for i in range(len(listOfendLines) - 1, 0, -1):
                     if listOfendLines[i] < 4096:

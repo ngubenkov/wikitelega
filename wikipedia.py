@@ -19,9 +19,11 @@ def return_article(name):
                         wiki_wiki = wikipediaapi.Wikipedia('en')
                         page_py = wiki_wiki.page(name)
                         sections = return_sections(page_py.sections)
-                        if("may refer to:" in page_py.text):
-                                print("REFER TO")
-                        return(page_py.text, sections)
+
+                if("may refer to:" in page_py.text):
+                        print("REFER TO")
+                        return("/refer", sections)
+                return(page_py.text, sections)
 
         else: #for russian language
                 wiki_wiki = wikipediaapi.Wikipedia('ru')
