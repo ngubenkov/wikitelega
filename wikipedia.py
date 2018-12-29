@@ -6,7 +6,7 @@ def return_article(name):
 
         if(isEnglish(name)):
                 # error requests enter here
-                if( name == "starbacks"):
+                if( name == "tdd"):
                         return("Stop", ["none"])
 
                 elif (name == "/start"): #welcome message
