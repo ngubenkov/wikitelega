@@ -1,0 +1,1 @@
+python wikitelega.py
