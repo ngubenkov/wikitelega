@@ -5,35 +5,39 @@ def return_article(name):
         print(name)
 
         if(isEnglish(name)):
-                # error requests enter here
-                if(name == "what is love"):
-                        return("Stop", ["none"])
+                wiki_wiki = wikipediaapi.Wikipedia('en')
+                page_py = wiki_wiki.page(name)
 
-                elif (name == "/start"): #welcome message
-                        return("/start", ["none"])
-
-                elif(name == "Губенков" or name == "Gubenkov pidaruga"):  #joke for pasha
-                        return("Pasha", ["none"])
-
-                else: # russian request
-                        wiki_wiki = wikipediaapi.Wikipedia('en')
-                        page_py = wiki_wiki.page(name)
+                #check for existing page
+                if(page_py.exists()): # if page exists
                         sections = return_sections(page_py.sections)
 
-                if("may refer to:" in page_py.text):
+                else:
+                        return("/pageNotFound", ["none"])
+
+                # Special cases
+                if (name == "/start"): #welcome message
+                        return("/start", ["none"])
+
+                elif("may refer to:" in page_py.text):
                         print("REFER TO")
                         return("/refer", sections)
+
                 return(page_py.text, sections)
 
         else: #for russian language
-                if (name == "События на Украине и в Крыму (2014 год)"):
-                        return ("Stop", ["none"])
-
-                wiki_wiki = wikipediaapi.Wikipedia('ru')
+                wiki_wiki = wikipediaapi.Wikipedia('en')
                 page_py = wiki_wiki.page(name)
+
+                if (page_py.exists()):  # if page exists
+                        sections = return_sections(page_py.sections)
+
+                else:
+                        return ("/pageNotFound", ["none"])
+
                 # print(page_py.sections[0])
                 # print(page_py.text[:page_py.text.index("\n")] )
-                sections = return_sections(page_py.sections)
+
                 if ("may refer to:" in page_py.text):
                         print("REFER TO")
                 return (page_py.text, sections)
@@ -46,8 +50,6 @@ def isEnglish(s):
         return False
     else:
         return True
-
-
 
 def return_sections(sections, level=0, section = []):
         section = []
@@ -90,6 +92,6 @@ def find(s, ch):
 
 
 # print(sections)
-
-
+a,b,c = return_article("russia")
+print( c )
 

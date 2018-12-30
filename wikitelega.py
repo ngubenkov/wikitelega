@@ -12,7 +12,6 @@ TOKEN = "773633629:AAHAy4gQHwEmZmR4oKiiHzvKFQCAYNhk_gg"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 #TODO:
-# normalize if size of message is too huge, now it's sending strange number of times
 # apply keyboard search
 
 
@@ -74,8 +73,8 @@ def handle_message(updates):
         message, sections = return_article(update["message"]["text"])
         keyboard = build_keyboard("")
 
-        if(message == "Stop"): # some unexpected shit handler
-            send_message("Shit happened", chat)
+        if(message == "/pageNotFound"): # some unexpected shit handler
+            send_message("Page not found", chat)
             print("Shit happened")
             break
 
