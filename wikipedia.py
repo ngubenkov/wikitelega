@@ -26,7 +26,7 @@ def return_article(name):
                 return(page_py.text, sections)
 
         else: #for russian language
-                wiki_wiki = wikipediaapi.Wikipedia('en')
+                wiki_wiki = wikipediaapi.Wikipedia('ru')
                 page_py = wiki_wiki.page(name)
 
                 if (page_py.exists()):  # if page exists
