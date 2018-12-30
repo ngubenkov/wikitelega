@@ -91,7 +91,5 @@ def find(s, ch):
 #print(articleToPrint)
 
 
-# print(sections)
-a,b,c = return_article("russia")
-print( c )
+
 
