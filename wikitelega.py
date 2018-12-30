@@ -4,6 +4,7 @@ import time
 import urllib
 from dbhelper import DBHelper
 from wikipedia import return_article
+import math
 
 db = DBHelper()
 
@@ -74,8 +75,8 @@ def handle_message(updates):
         keyboard = build_keyboard("")
 
         if(message == "Stop"): # some unexpected shit handler
-            print("HERE")
             send_message("Shit happened", chat)
+            print("Shit happened")
             break
 
         elif(message == "Language barier"): # language problem(not sure if it will happend anymore)
@@ -105,17 +106,24 @@ def handle_message(updates):
             listOfendLines = find(message, '\n')
             message = message[:message.index(sections[0])] # get only first part of page before first section
             keyboard = build_keyboard(sections)
-
+           # print(message)
 
             # porblem is here prints too many times
-            if listOfendLines[len(listOfendLines) - 1] > 4096: # if article text is greate than 4096 split on two messages
-                for i in range(len(listOfendLines) - 1, 0, -1):
-                    if listOfendLines[i] < 4096:
-                        send_message(message[0:listOfendLines[i]], chat)
-                        send_message(message[listOfendLines[i]:], chat, keyboard)
+            if len(message) > 4096: # if article text is greate than 4096 split on two messages
+                print("Len of articlcle is : {}".format(len(message)) )
+                print(math.ceil(len(message)/4096))
+                for i in range( math.ceil(len(message)/4096) ):
+                    print(i)
+                    if(i==math.ceil(len(message)/4096) -1):
+                        print(message[i*4096:len(message)])
+                        send_message(message[i*4096:len(message)],chat,keyboard)
+
+                    else:
+                        print( message[i * 4096 : 4096 + (i*4096) ] )
+                        send_message(message[i*4096 : 4096+i*4096] , chat)
 
             else:
-                send_message(message[:message.index(sections[0])], chat, keyboard)
+                send_message(message, chat, keyboard)
             remove_keyboard(updates)
 
 def find(s, ch): # find all char in string

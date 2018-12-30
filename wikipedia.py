@@ -6,7 +6,7 @@ def return_article(name):
 
         if(isEnglish(name)):
                 # error requests enter here
-                if( name == "Notes"):
+                if(name == "События на Украине и в Крыму (2014 год)"):
                         return("Stop", ["none"])
 
                 elif (name == "/start"): #welcome message
@@ -26,6 +26,9 @@ def return_article(name):
                 return(page_py.text, sections)
 
         else: #for russian language
+                if (name == "События на Украине и в Крыму (2014 год)"):
+                        return ("Stop", ["none"])
+
                 wiki_wiki = wikipediaapi.Wikipedia('ru')
                 page_py = wiki_wiki.page(name)
                 # print(page_py.sections[0])
