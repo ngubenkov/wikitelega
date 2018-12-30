@@ -6,7 +6,7 @@ def return_article(name):
 
         if(isEnglish(name)):
                 # error requests enter here
-                if(name == "События на Украине и в Крыму (2014 год)"):
+                if(name == "what is love"):
                         return("Stop", ["none"])
 
                 elif (name == "/start"): #welcome message
