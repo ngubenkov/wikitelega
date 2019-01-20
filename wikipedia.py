@@ -1,8 +1,8 @@
 import wikipediaapi
 import requests
+import datetime
 
 def return_article(name):
-        print(name)
 
         if(isEnglish(name)):
                 wiki_wiki = wikipediaapi.Wikipedia('en')
@@ -29,6 +29,7 @@ def return_article(name):
                 wiki_wiki = wikipediaapi.Wikipedia('ru')
                 page_py = wiki_wiki.page(name)
 
+
                 if (page_py.exists()):  # if page exists
                         sections = return_sections(page_py.sections)
 
@@ -40,6 +41,7 @@ def return_article(name):
 
                 if ("may refer to:" in page_py.text):
                         print("REFER TO")
+
                 return (page_py.text, sections)
 
 # check if entered english request
@@ -69,26 +71,6 @@ def wiki_search(name):
 
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
-
-#result = requests.get('https://en.wikipedia.org/w/api.php', params=req).json()
-
-
-#
-#articleToPrint = articleText[:articleText.index(sections[0])]
-#
-# listOfEndLines = find(articleToPrint, '\n')
-# print(listOfEndLines)
-#
-# for i in range(len(listOfEndLines)-1, 0, -1):
-#         if listOfEndLines[i] < 4096:
-#                 print( articleToPrint[0:listOfEndLines[i]])
-#                 print("#############")
-#                 print(articleToPrint[listOfEndLines[i]:] )
-#                 break
-
-#4096
-#print("22222222222")
-#print(articleToPrint)
 
 
 

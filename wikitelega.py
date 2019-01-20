@@ -13,6 +13,7 @@ URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 #TODO:
 # apply keyboard search
+# check inlinekeyboardbutton for keyboard and callback
 
 
 def get_url(url): # connect to bot
@@ -66,7 +67,10 @@ def get_last_update_id(updates):
 #             send_message(message, chat)
 
 def handle_message(updates):
+
     for update in updates["result"]:
+
+        #print(len(update))
         chat = update["message"]["chat"]["id"]
        # print(return_article(update["message"]["text"]))
        # print(update["message"]["text"])
@@ -75,11 +79,11 @@ def handle_message(updates):
 
         if(message == "/pageNotFound"): # some unexpected shit handler
             send_message("Page not found", chat)
-            print("Shit happened")
+            print("Page not found")
             break
 
         elif(message == "Language barier"): # language problem(not sure if it will happend anymore)
-            send_message("Please use only english characters.(Will be update soon)", chat)
+            send_message("Please use only english or russian characters.(Will be update soon)", chat)
             print("Language barier")
             break
 
@@ -93,12 +97,8 @@ def handle_message(updates):
             send_message("May refer to : {}".format(sections), chat, keyboard)
 
 
-        elif (message == "Pasha"): # Pasha's case
-            print("Pasha's case")
-            send_message("возможно вы имели ввиду Строчков павел из города Златоуст любит когда его долбят в анус", chat)
-            print("Pasha handled")
-
         else: # normal case
+
             print("everything is fine")
             print("sections : {}".format(sections))
             print("message length : {}".format(len(message[:message.index(sections[0])])  )   )
@@ -110,19 +110,22 @@ def handle_message(updates):
             # porblem is here prints too many times
             if len(message) > 4096: # if article text is greate than 4096 split on two messages
                 print("Len of articlcle is : {}".format(len(message)) )
-                print(math.ceil(len(message)/4096))
+                #print(math.ceil(len(message)/4096))
                 for i in range( math.ceil(len(message)/4096) ):
-                    print(i)
+                    #print(i)
                     if(i==math.ceil(len(message)/4096) -1):
-                        print(message[i*4096:len(message)])
-                        send_message(message[i*4096:len(message)],chat,keyboard)
+                        #print(message[i*4096:len(message)])
+                        send_message(message[i*4096:len(message)],chat, keyboard, update["message"]["text"])
+                        send_message(message[i * 4096:len(message)], chat, keyboard)
+
 
                     else:
-                        print( message[i * 4096 : 4096 + (i*4096) ] )
+                        #print( message[i * 4096 : 4096 + (i*4096) ] )
                         send_message(message[i*4096 : 4096+i*4096] , chat)
 
             else:
-                send_message(message, chat, keyboard)
+                #send_message(message, chat, keyboard, chat["text"])
+                send_message(message, chat, keyboard, update["message"]["text"])
             remove_keyboard(updates)
 
 def find(s, ch): # find all char in string
@@ -143,11 +146,38 @@ def get_last_chat_id_and_text(updates):
 
 def build_keyboard(items):
     keyboard = [[item] for item in items]
+    #callback_data = (len(items)-1)
+    #print( [i for i in range(len(keyboard))] )
     reply_markup = {"keyboard":keyboard, "one_time_keyboard": True}
+   #  reply_markup = {
+   #          "inline_keyboard": [[
+   #              {
+   #                  "text": "A",
+   #                  "callback_data": "A1"
+   #              },
+   #              {
+   #                  "text": "B",
+   #                  "callback_data": "C1"
+   #              },
+   #              {
+   #                  "text": "C",
+   #                  "callback_data": "D1"
+   #              }
+   #          ]
+   #          ]
+   #      }
+    #print(reply_markup)
     return json.dumps(reply_markup)
 
 
-def send_message(text, chat_id, reply_markup=None):
+def send_message(text, chat_id, reply_markup=None, request=None):
+
+    #print(request)
+    if request:
+        #print("REQUEST ##########" + request)
+        db.insertRequest(chat_id, request)
+        db.updateLastRequest(chat_id,request)
+
     text = urllib.parse.quote_plus(text)
     url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chat_id)
     if reply_markup:
@@ -156,7 +186,7 @@ def send_message(text, chat_id, reply_markup=None):
 
 
 def main():
-    #db.setup()
+    db.setup()
     last_update_id = None
     while True:
         try:
@@ -166,10 +196,13 @@ def main():
                 handle_message(updates)
                 #handle_updates(updates)
             time.sleep(0.5)
-        except:
+
+        except Exception as e:
             for update in updates["result"]:
                 chat = update["message"]["chat"]["id"]
                 send_message("shit happened", chat)
+                db.insertError(chat, update["message"]["text"],str(e))
+          #  print(e)
 
 
 if __name__ == '__main__':
