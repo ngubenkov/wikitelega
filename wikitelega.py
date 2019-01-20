@@ -116,7 +116,7 @@ def handle_message(updates):
                     if(i==math.ceil(len(message)/4096) -1):
                         #print(message[i*4096:len(message)])
                         send_message(message[i*4096:len(message)],chat, keyboard, update["message"]["text"])
-                        send_message(message[i * 4096:len(message)], chat, keyboard)
+                        #send_message(message[i * 4096:len(message)], chat, keyboard)
 
 
                     else:
