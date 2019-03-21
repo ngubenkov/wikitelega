@@ -2,7 +2,7 @@ import json
 import requests
 import time
 import urllib
-from dbhelper import DBHelper
+from postgreSql import DBHelper
 from wikipedia import return_article
 import math
 
@@ -186,7 +186,6 @@ def send_message(text, chat_id, reply_markup=None, request=None):
 
 
 def main():
-    db.setup()
     last_update_id = None
     while True:
         try:

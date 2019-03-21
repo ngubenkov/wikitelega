@@ -10,7 +10,6 @@ class DBHelper:
 
     def setup(self):
         try:
-
             createTable = """ CREATE TABLE IF NOT EXISTS lastRequest (
                                                     chatID integer PRIMARY KEY,
                                                     request text NOT NULL
@@ -23,6 +22,7 @@ class DBHelper:
                                                     request text NOT NULL,
                                                     TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
                                                 );"""
+
             self.conn.execute(createRequestTable)
             self.conn.commit()
 
