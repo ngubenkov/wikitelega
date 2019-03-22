@@ -4,9 +4,8 @@ class DBHelper:
 
     def __init__(self):
         self.conn = psycopg2.connect(host="ec2-54-247-70-127.eu-west-1.compute.amazonaws.com",
-                            database="df7jrjh4gv153e", user="sqjmjpazjbvmrl",
-                            port = "5432",
-                            password="5c8e91b8f850ba76d1df21e24e4bf0daa0e12d4c3fb5f0ca2c1d1dd7e1a24ae1")
+                                    database="df7jrjh4gv153e", user="sqjmjpazjbvmrl", port = "5432",
+                                    password="5c8e91b8f850ba76d1df21e24e4bf0daa0e12d4c3fb5f0ca2c1d1dd7e1a24ae1")
 
     def insertRequest(self, chatID, request):
         self.cur = self.conn.cursor()
@@ -68,7 +67,7 @@ class DBHelper:
 
 
 def main():
-    db = DBTest()
+    db = DBHelper()
     #db.insertRequest('1','Inserted from local to heroku')
     #db.insertRequest('4', 'QQQQQqq')
     #db.insertRequest('5', 'QQQQQqq')

@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a85d8b80-05a6-4717-8add-c477f297fd3e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/postgreSql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dbhelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbhelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wikiSearch.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgreSql.py" beforeDir="false" afterPath="$PROJECT_DIR$/postgreSql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wikipedia.py" beforeDir="false" afterPath="$PROJECT_DIR$/wikipedia.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wikitelega.py" beforeDir="false" afterPath="$PROJECT_DIR$/wikitelega.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wikitelega.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wikitelega.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wikitelega.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="187" column="11" selection-start-line="187" selection-start-column="11" selection-end-line="187" selection-end-column="11" />
+            <state relative-caret-position="153">
+              <caret line="178" column="21" lean-forward="true" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -33,8 +33,8 @@
       <file leaf-file-name="wikipedia.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wikipedia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="107">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -51,44 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbhelper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbhelper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="28" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="postgreSql.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="postgreSql.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/postgreSql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dbTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbTest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-594">
-              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="309">
+              <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -115,9 +82,9 @@
         <option value="$PROJECT_DIR$/todobot.py" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/gitReminder.txt" />
-        <option value="$PROJECT_DIR$/wikipedia.py" />
-        <option value="$PROJECT_DIR$/dbTest.py" />
         <option value="$PROJECT_DIR$/dbhelper.py" />
+        <option value="$PROJECT_DIR$/dbTest.py" />
+        <option value="$PROJECT_DIR$/wikipedia.py" />
         <option value="$PROJECT_DIR$/postgreSql.py" />
         <option value="$PROJECT_DIR$/wikitelega.py" />
       </list>
@@ -172,7 +139,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.postgreSql">
+  <component name="RunManager" selected="Python.todobot">
     <configuration name="dbTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="WikiBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -272,9 +239,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.todobot" />
         <item itemvalue="Python.postgreSql" />
         <item itemvalue="Python.dbTest" />
-        <item itemvalue="Python.todobot" />
         <item itemvalue="Python.wikipedia" />
         <item itemvalue="Python.echobot" />
       </list>
@@ -304,17 +271,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-31" y="25" width="1440" height="807" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13812543" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32957748" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32957748" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32957748" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.41549295" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32957748" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2915493" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2915493" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -530,10 +496,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dbTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbhelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wikitelega.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="178" column="21" lean-forward="true" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wikipedia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="107">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -547,47 +550,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-594">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/postgreSql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbhelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wikitelega.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="187" column="11" selection-start-line="187" selection-start-column="11" selection-end-line="187" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="309">
+          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -2,6 +2,7 @@ import sqlite3
 from sqlite3 import Error
 from dbhelper import DBHelper
 
+# old version used sqllite
 
 db = DBHelper()
 

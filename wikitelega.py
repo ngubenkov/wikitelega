@@ -69,7 +69,6 @@ def get_last_update_id(updates):
 def handle_message(updates):
 
     for update in updates["result"]:
-
         #print(len(update))
         chat = update["message"]["chat"]["id"]
        # print(return_article(update["message"]["text"]))
@@ -171,7 +170,6 @@ def build_keyboard(items):
 
 
 def send_message(text, chat_id, reply_markup=None, request=None):
-
     #print(request)
     if request:
         #print("REQUEST ##########" + request)
@@ -183,7 +181,6 @@ def send_message(text, chat_id, reply_markup=None, request=None):
     if reply_markup:
         url += "&reply_markup={}".format(reply_markup)
     get_url(url)
-
 
 def main():
     last_update_id = None
@@ -202,7 +199,6 @@ def main():
                 send_message("shit happened", chat)
                 db.insertError(chat, update["message"]["text"],str(e))
           #  print(e)
-
 
 if __name__ == '__main__':
     main()

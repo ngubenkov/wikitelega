@@ -3,7 +3,6 @@ import requests
 import datetime
 
 def return_article(name):
-
         if(isEnglish(name)):
                 wiki_wiki = wikipediaapi.Wikipedia('en')
                 page_py = wiki_wiki.page(name)
@@ -29,13 +28,11 @@ def return_article(name):
                 wiki_wiki = wikipediaapi.Wikipedia('ru')
                 page_py = wiki_wiki.page(name)
 
-
                 if (page_py.exists()):  # if page exists
                         sections = return_sections(page_py.sections)
 
                 else:
                         return ("/pageNotFound", ["none"])
-
                 # print(page_py.sections[0])
                 # print(page_py.text[:page_py.text.index("\n")] )
 
@@ -71,7 +68,3 @@ def wiki_search(name):
 
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
-
-
-
-

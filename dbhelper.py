@@ -2,6 +2,7 @@ import sqlite3
 import datetime
 
 
+# old version using sqllite
 class DBHelper:
 
     def __init__(self, dbname="wikiSearch.sqlite"):
