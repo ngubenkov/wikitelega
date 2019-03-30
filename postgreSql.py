@@ -12,11 +12,15 @@ class DBHelper:
         insertQuerry = "INSERT INTO requests (chatid, request) VALUES (%s, %s);"
         data = (chatID, request,)
         self.cur.execute(insertQuerry, data)
+        self.updateLastRequest(chatID, request)
         self.conn.commit()
 
     def updateLastRequest(self, chatID, request):
         self.cur = self.conn.cursor()
-        update = """ INSERT OR REPLACE INTO lastRequest(chatID, request) VALUES(%s, %s); """
+        update = """ INSERT INTO lastRequest(chatID, request) VALUES(%s, %s)
+                        ON CONFLICT (chatID) 
+                        DO 
+                        UPDATE SET request = Excluded.request; """
         data = (chatID, request,)
         self.cur.execute(update, data)
         self.conn.commit()
@@ -24,6 +28,14 @@ class DBHelper:
     def selectAll(self):
         self.cur = self.conn.cursor()
         self.cur.execute("SELECT * FROM requests;")
+        rows = self.cur.fetchall()
+        for row in rows:
+            print(row)
+        self.cur.close()
+
+    def selectAllLast(self):
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM lastRequest;")
         rows = self.cur.fetchall()
         for row in rows:
             print(row)
@@ -70,10 +82,9 @@ def main():
     db = DBHelper()
     #db.insertRequest('1','Inserted from local to heroku')
     #db.insertRequest('4', 'QQQQQqq')
-    #db.insertRequest('5', 'QQQQQqq')
-    db.selectAll()
-
-
+    #db.insertRequest('5', 'WWWWW')
+    #db.updateLastRequest(242215519, "updated")
+    #db.selectAllLast()
 
 if __name__ == '__main__':
     main()
