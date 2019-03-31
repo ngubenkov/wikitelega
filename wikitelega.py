@@ -67,7 +67,6 @@ def get_last_update_id(updates):
 #             send_message(message, chat)
 
 def handle_message(updates):
-
     for update in updates["result"]:
         #print(len(update))
         chat = update["message"]["chat"]["id"]
@@ -95,9 +94,10 @@ def handle_message(updates):
             keyboard = build_keyboard(sections)
             send_message("May refer to : {}".format(sections), chat, keyboard)
 
+        elif(message == "/statistic"): # get statistic
+            send_message(db.selectAllLast(), chat)
 
         else: # normal case
-
             print("everything is fine")
             print("sections : {}".format(sections))
             print("message length : {}".format(len(message[:message.index(sections[0])])  )   )
@@ -116,7 +116,6 @@ def handle_message(updates):
                         #print(message[i*4096:len(message)])
                         send_message(message[i*4096:len(message)],chat, keyboard, update["message"]["text"])
                         #send_message(message[i * 4096:len(message)], chat, keyboard)
-
 
                     else:
                         #print( message[i * 4096 : 4096 + (i*4096) ] )

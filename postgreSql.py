@@ -7,6 +7,16 @@ class DBHelper:
                                     database="df7jrjh4gv153e", user="sqjmjpazjbvmrl", port = "5432",
                                     password="5c8e91b8f850ba76d1df21e24e4bf0daa0e12d4c3fb5f0ca2c1d1dd7e1a24ae1")
 
+
+    def setup(self):
+        createErrorTable = """CREATE TABLE IF NOT EXISTS errors (
+                                                    ID SERIAL PRIMARY KEY,
+                                                    chatID integer NOT NULL,
+                                                    request text NOT NULL,
+                                                    error text NOT NULL,
+                                                    requested_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+                                                );"""
+
     def insertRequest(self, chatID, request):
         self.cur = self.conn.cursor()
         insertQuerry = "INSERT INTO requests (chatid, request) VALUES (%s, %s);"
@@ -18,9 +28,9 @@ class DBHelper:
     def updateLastRequest(self, chatID, request):
         self.cur = self.conn.cursor()
         update = """ INSERT INTO lastRequest(chatID, request) VALUES(%s, %s)
-                        ON CONFLICT (chatID) 
+                        ON CONFLICT (chatID)   
                         DO 
-                        UPDATE SET request = Excluded.request; """
+                        UPDATE SET request = Excluded.request; """    # insert if not exist if exist (ON CONFLICT) update
         data = (chatID, request,)
         self.cur.execute(update, data)
         self.conn.commit()
@@ -37,6 +47,16 @@ class DBHelper:
         self.cur = self.conn.cursor()
         self.cur.execute("SELECT * FROM lastRequest;")
         rows = self.cur.fetchall()
+        info = ""
+        for row in rows:
+            info = info + str(row) + "\n"
+        self.cur.close()
+        return info
+
+    def selectAllDelete(self):
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM errors;")
+        rows = self.cur.fetchall()
         for row in rows:
             print(row)
         self.cur.close()
@@ -49,7 +69,7 @@ class DBHelper:
 
     def insertError(self, chatID, request, e):
         self.cur = self.conn.cursor()
-        insertSQL = "INSERT INTO errors(chatID, request, error, TIMESTAMP) VALUES( %s, %s, %s, DATETIME('now') );"
+        insertSQL = "INSERT INTO errors (chatID, request, error) VALUES( %s, %s, %s);"
         data = (chatID, request, str(e),)
         self.cur.execute(insertSQL, data)
         self.conn.commit()
@@ -84,7 +104,9 @@ def main():
     #db.insertRequest('4', 'QQQQQqq')
     #db.insertRequest('5', 'WWWWW')
     #db.updateLastRequest(242215519, "updated")
-    #db.selectAllLast()
-
+    db.insertError(1,"errror", "errrrr")
+    #print("########")
+    db.selectAllDelete()
+    #print(info)
 if __name__ == '__main__':
     main()

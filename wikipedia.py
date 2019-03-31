@@ -6,21 +6,23 @@ def return_article(name):
         if(isEnglish(name)):
                 wiki_wiki = wikipediaapi.Wikipedia('en')
                 page_py = wiki_wiki.page(name)
-
                 #check for existing page
                 if(page_py.exists()): # if page exists
                         sections = return_sections(page_py.sections)
-
-                else:
-                        return("/pageNotFound", ["none"])
+                        if ("may refer to:" in page_py.text): # if many many page refers to request
+                                print("REFER TO")
+                                return ("/refer", sections)
 
                 # Special cases
-                if (name == "/start"): #welcome message
+                elif (name == "/start"): #welcome message
                         return("/start", ["none"])
 
-                elif("may refer to:" in page_py.text):
-                        print("REFER TO")
-                        return("/refer", sections)
+                elif(name == "/statistic"): # get statistic
+                        print("Statistic case")
+                        return("/statistic", ["none"])
+
+                else: # page not found
+                        return("/pageNotFound", ["none"])
 
                 return(page_py.text, sections)
 
