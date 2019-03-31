@@ -23,11 +23,11 @@ def return_article(name):
 
                 elif (name == "/allStatistic"):  # get statistic
                     print("Last tatistic case")
-                    return ("/lastStatistic", ["none"])
+                    return ("/allStatistic", ["none"])
 
                 elif (name == "/errorStatistic"):  # get statistic
                     print("Last tatistic case")
-                    return ("/lastStatistic", ["none"])
+                    return ("/errorStatistic", ["none"])
 
                 else: # page not found
                         return("/pageNotFound", ["none"])
