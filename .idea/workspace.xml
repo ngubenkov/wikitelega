@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a85d8b80-05a6-4717-8add-c477f297fd3e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/wikipedia.py" beforeDir="false" afterPath="$PROJECT_DIR$/wikipedia.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgreSql.py" beforeDir="false" afterPath="$PROJECT_DIR$/postgreSql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +16,8 @@
       <file leaf-file-name="wikitelega.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wikitelega.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="97" column="32" lean-forward="true" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+            <state relative-caret-position="242">
+              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -28,8 +28,8 @@
       <file leaf-file-name="wikipedia.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wikipedia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+            <state relative-caret-position="265">
+              <caret line="27" column="46" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="46" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -49,8 +49,8 @@
       <file leaf-file-name="postgreSql.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/postgreSql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="114" selection-start-line="114" selection-end-line="114" />
+            <state relative-caret-position="1036">
+              <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -84,9 +84,9 @@
         <option value="$PROJECT_DIR$/dbhelper.py" />
         <option value="$PROJECT_DIR$/dbTest.py" />
         <option value="$PROJECT_DIR$/gitReminder.txt" />
-        <option value="$PROJECT_DIR$/postgreSql.py" />
-        <option value="$PROJECT_DIR$/wikitelega.py" />
         <option value="$PROJECT_DIR$/wikipedia.py" />
+        <option value="$PROJECT_DIR$/wikitelega.py" />
+        <option value="$PROJECT_DIR$/postgreSql.py" />
       </list>
     </option>
   </component>
@@ -277,11 +277,11 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32819074" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32957748" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4174894" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4174894" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32959327" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32819074" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32299012" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32299012" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -574,13 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/postgreSql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gitReminder.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -590,18 +583,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wikitelega.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="97" column="32" lean-forward="true" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+        <state relative-caret-position="242">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/postgreSql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1036">
+          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wikipedia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+        <state relative-caret-position="265">
+          <caret line="27" column="46" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="46" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

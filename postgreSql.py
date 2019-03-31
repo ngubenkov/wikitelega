@@ -42,14 +42,18 @@ class DBHelper:
         self.conn.commit()
         self.cur.close()
 
+
     # select commands
     def selectAll(self):  # select all requests
         self.cur = self.conn.cursor()
         self.cur.execute("SELECT * FROM requests;")
         rows = self.cur.fetchall()
+        info = ""
         for row in rows:
-            print(row)
+            print(str(row[0]) + " " + str(row[1]) + " " + str(row[2]))
+            info = info + str(row[0]) + " " + str(row[1]) + " " + str(row[2]) + "\n"
         self.cur.close()
+        return info
 
     def selectAllLast(self): # select last requests
         self.cur = self.conn.cursor()
@@ -57,7 +61,8 @@ class DBHelper:
         rows = self.cur.fetchall()
         info = ""
         for row in rows:
-            info = info + str(row) + "\n"
+            print(row)
+            info = info + str(row[0]) + " " + str(row[1]) + "\n"
         self.cur.close()
         return info
 
@@ -65,9 +70,13 @@ class DBHelper:
         self.cur = self.conn.cursor()
         self.cur.execute("SELECT * FROM errors;")
         rows = self.cur.fetchall()
+        info = ""
         for row in rows:
-            print(row)
+            #print(row)
+            print(str(row[0]) + " " + str(row[1]) + " " + str(row[2]) + " " + str(row[3]) + " " + str(row[4]))
+            info = info + str(row[0]) + " " + str(row[1]) + " " + str(row[2]) + " " + str(row[3]) + " " + str(row[4]) + "\n"
         self.cur.close()
+        return info
 
     #other commands
     def updateLastRequest(self, chatID, request):
@@ -108,9 +117,9 @@ def main():
     #db.insertRequest('4', 'QQQQQqq')
     #db.insertRequest('5', 'WWWWW')
     #db.updateLastRequest(242215519, "updated")
-    db.insertError(1,"errror", "errrrr")
+    #db.insertError(1,"errror", "errrrr")
     #print("########")
-    db.selectAllError()
+    db.selectAllLast()
     #print(info)
 
 if __name__ == '__main__':
