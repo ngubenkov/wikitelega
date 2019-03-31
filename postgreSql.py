@@ -17,6 +17,7 @@ class DBHelper:
                                                     requested_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
                                                 );"""
 
+    # insert commands
     def insertRequest(self, chatID, request):
         self.cur = self.conn.cursor()
         insertQuerry = "INSERT INTO requests (chatid, request) VALUES (%s, %s);"
@@ -24,48 +25,6 @@ class DBHelper:
         self.cur.execute(insertQuerry, data)
         self.updateLastRequest(chatID, request)
         self.conn.commit()
-
-    def updateLastRequest(self, chatID, request):
-        self.cur = self.conn.cursor()
-        update = """ INSERT INTO lastRequest(chatID, request) VALUES(%s, %s)
-                        ON CONFLICT (chatID)   
-                        DO 
-                        UPDATE SET request = Excluded.request; """    # insert if not exist if exist (ON CONFLICT) update
-        data = (chatID, request,)
-        self.cur.execute(update, data)
-        self.conn.commit()
-
-    def selectAll(self):
-        self.cur = self.conn.cursor()
-        self.cur.execute("SELECT * FROM requests;")
-        rows = self.cur.fetchall()
-        for row in rows:
-            print(row)
-        self.cur.close()
-
-    def selectAllLast(self):
-        self.cur = self.conn.cursor()
-        self.cur.execute("SELECT * FROM lastRequest;")
-        rows = self.cur.fetchall()
-        info = ""
-        for row in rows:
-            info = info + str(row) + "\n"
-        self.cur.close()
-        return info
-
-    def selectAllDelete(self):
-        self.cur = self.conn.cursor()
-        self.cur.execute("SELECT * FROM errors;")
-        rows = self.cur.fetchall()
-        for row in rows:
-            print(row)
-        self.cur.close()
-
-    def drop(self):
-        self.cur = self.conn.cursor()
-        self.cur.execute("""DROP TABLE lastRequest;""")
-        self.cur.commit()
-        self.cur.close()
 
     def insertError(self, chatID, request, e):
         self.cur = self.conn.cursor()
@@ -82,6 +41,51 @@ class DBHelper:
         self.cur.execute(addSQL, data)
         self.conn.commit()
         self.cur.close()
+
+    # select commands
+    def selectAll(self):  # select all requests
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM requests;")
+        rows = self.cur.fetchall()
+        for row in rows:
+            print(row)
+        self.cur.close()
+
+    def selectAllLast(self): # select last requests
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM lastRequest;")
+        rows = self.cur.fetchall()
+        info = ""
+        for row in rows:
+            info = info + str(row) + "\n"
+        self.cur.close()
+        return info
+
+    def selectAllError(self): # select errors
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM errors;")
+        rows = self.cur.fetchall()
+        for row in rows:
+            print(row)
+        self.cur.close()
+
+    #other commands
+    def updateLastRequest(self, chatID, request):
+        self.cur = self.conn.cursor()
+        update = """ INSERT INTO lastRequest(chatID, request) VALUES(%s, %s)
+                        ON CONFLICT (chatID)   
+                        DO 
+                        UPDATE SET request = Excluded.request; """    # insert if not exist if exist (ON CONFLICT) update
+        data = (chatID, request,)
+        self.cur.execute(update, data)
+        self.conn.commit()
+
+    def drop(self):
+        self.cur = self.conn.cursor()
+        self.cur.execute("""DROP TABLE lastRequest;""")
+        self.cur.commit()
+        self.cur.close()
+
 
     def delete_item(self, item_text, owner):
         self.cur = self.conn.cursor()
@@ -106,7 +110,8 @@ def main():
     #db.updateLastRequest(242215519, "updated")
     db.insertError(1,"errror", "errrrr")
     #print("########")
-    db.selectAllDelete()
+    db.selectAllError()
     #print(info)
+
 if __name__ == '__main__':
     main()

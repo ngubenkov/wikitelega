@@ -17,9 +17,17 @@ def return_article(name):
                 elif (name == "/start"): #welcome message
                         return("/start", ["none"])
 
-                elif(name == "/statistic"): # get statistic
-                        print("Statistic case")
-                        return("/statistic", ["none"])
+                elif(name == "/lastStatistic"): # get statistic
+                        print("Last tatistic case")
+                        return("/lastStatistic", ["none"])
+
+                elif (name == "/allStatistic"):  # get statistic
+                    print("Last tatistic case")
+                    return ("/lastStatistic", ["none"])
+
+                elif (name == "/errorStatistic"):  # get statistic
+                    print("Last tatistic case")
+                    return ("/lastStatistic", ["none"])
 
                 else: # page not found
                         return("/pageNotFound", ["none"])

@@ -94,8 +94,14 @@ def handle_message(updates):
             keyboard = build_keyboard(sections)
             send_message("May refer to : {}".format(sections), chat, keyboard)
 
-        elif(message == "/statistic"): # get statistic
+        elif(message == "/lastStatistic"): # get statistic
             send_message(db.selectAllLast(), chat)
+
+        elif (message == "/allStatistic"):  # get statistic
+            send_message(db.selectAll() , chat)
+
+        elif (message == "/errorStatistic"):  # get statistic
+            send_message(db.selectAllError() , chat)
 
         else: # normal case
             print("everything is fine")
