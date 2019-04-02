@@ -68,10 +68,10 @@ def get_last_update_id(updates):
 
 def handle_message(updates):
     for update in updates["result"]:
-        #print(len(update))
+        print(update["message"]["chat"]["id"])
         chat = update["message"]["chat"]["id"]
-       # print(return_article(update["message"]["text"]))
-       # print(update["message"]["text"])
+        print(return_article(update["message"]["text"]))
+        print(update["message"]["text"])
         message, sections = return_article(update["message"]["text"])
         keyboard = build_keyboard("")
 
@@ -95,13 +95,23 @@ def handle_message(updates):
             send_message("May refer to : {}".format(sections), chat, keyboard)
 
         elif(message == "/lastStatistic"): # get statistic
-            send_message(db.selectAllLast(), chat)
+            try:
+                send_message(db.selectAllLast(), chat)
+            except Exception as e:
+                db.insertError(chat, message, str(e))
+
 
         elif (message == "/allStatistic"):  # get statistic
-            send_message(db.selectAll() , chat)
+            try:
+                send_message(db.selectAll() , chat)
+            except Exception as e:
+                db.insertError(chat, message, str(e))
 
         elif (message == "/errorStatistic"):  # get statistic
-            send_message(db.selectAllError() , chat)
+            try:
+                send_message(db.selectAllError() , chat)
+            except Exception as e:
+                db.insertError(chat, message, str(e))
 
         else: # normal case
             print("everything is fine")
@@ -178,8 +188,11 @@ def send_message(text, chat_id, reply_markup=None, request=None):
     #print(request)
     if request:
         #print("REQUEST ##########" + request)
-        db.insertRequest(chat_id, request)
-        db.updateLastRequest(chat_id,request)
+        try:
+            db.insertRequest(chat_id, request)
+            db.updateLastRequest(chat_id,request)
+        except Exception as e:
+            db.insertError(chat_id, request, str(e))
 
     text = urllib.parse.quote_plus(text)
     url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chat_id)
@@ -202,7 +215,10 @@ def main():
             for update in updates["result"]:
                 chat = update["message"]["chat"]["id"]
                 send_message("shit happened", chat)
-                db.insertError(chat, update["message"]["text"],str(e))
+                try:
+                    db.insertError(chat, update["message"]["text"], str(e))
+                except Exception as e:
+                    db.insertError(chat, update["message"]["text"], str(e))
           #  print(e)
 
 if __name__ == '__main__':

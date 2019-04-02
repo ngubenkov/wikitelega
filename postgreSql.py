@@ -3,9 +3,9 @@ import psycopg2
 class DBHelper:
 
     def __init__(self):
-        self.conn = psycopg2.connect(host="ec2-54-247-70-127.eu-west-1.compute.amazonaws.com",
-                                    database="df7jrjh4gv153e", user="sqjmjpazjbvmrl", port = "5432",
-                                    password="5c8e91b8f850ba76d1df21e24e4bf0daa0e12d4c3fb5f0ca2c1d1dd7e1a24ae1")
+        self.conn = psycopg2.connect(host="ec2-54-75-245-196.eu-west-1.compute.amazonaws.com",
+                                    database="d6jl5hpm0h81ta", user="subhmwvwkczboo", port = "5432",
+                                    password="65dba2994e5e08ef80dbc1ae8275ca9abcd38af2d04cb830a2bb24171da45bad")
 
 
     def setup(self):
