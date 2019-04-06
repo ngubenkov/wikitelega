@@ -16,8 +16,8 @@
       <file leaf-file-name="wikitelega.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wikitelega.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="-20">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="30" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wikipedia.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wikipedia.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wikipedia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="27" column="46" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="46" />
+            <state relative-caret-position="232">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -46,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postgreSql.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="postgreSql.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/postgreSql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1036">
-              <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+            <state relative-caret-position="231">
+              <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="108" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -66,7 +66,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>cursor</find>
       <find>return_article</find>
+      <find>get_items</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,7 +93,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-47" />
+    <option name="x" value="56" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="806" />
@@ -117,6 +119,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="curs&#9;null&#9;null" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -139,7 +142,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.todobot">
+  <component name="RunManager" selected="Python.postgreSql">
     <configuration name="dbTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="WikiBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -239,8 +242,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.todobot" />
         <item itemvalue="Python.postgreSql" />
+        <item itemvalue="Python.todobot" />
         <item itemvalue="Python.dbTest" />
         <item itemvalue="Python.wikipedia" />
         <item itemvalue="Python.echobot" />
@@ -270,7 +273,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-47" y="23" width="1440" height="806" extended-state="0" />
+    <frame x="56" y="23" width="1440" height="806" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13742071" />
@@ -574,6 +577,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wikipedia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gitReminder.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -581,30 +594,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/venv/WikiBot/lib/python3.6/site-packages/postgresql/driver/dbapi20.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.1/python_stubs/755789832/psycopg2/_psycopg/cursor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wikitelega.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="-20">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="30" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/postgreSql.py">
+    <entry file="file://$USER_HOME$/venv/WikiBot/lib/python3.6/site-packages/psycopg2/extensions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1036">
-          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        <state relative-caret-position="15">
+          <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
+          <folding>
+            <element signature="e#1487#1503#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wikipedia.py">
+    <entry file="file://$PROJECT_DIR$/postgreSql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="27" column="46" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="231">
+          <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="108" selection-end-column="23" />
         </state>
       </provider>
     </entry>

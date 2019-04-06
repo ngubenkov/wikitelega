@@ -3,9 +3,9 @@ import psycopg2
 class DBHelper:
 
     def __init__(self):
-        self.conn = psycopg2.connect(host="ec2-54-247-70-127.eu-west-1.compute.amazonaws.com",
-                                    database="df7jrjh4gv153e", user="sqjmjpazjbvmrl", port = "5432",
-                                    password="5c8e91b8f850ba76d1df21e24e4bf0daa0e12d4c3fb5f0ca2c1d1dd7e1a24ae1")
+        self.conn = psycopg2.connect(host="ec2-54-75-245-196.eu-west-1.compute.amazonaws.com",
+                                   database="d6jl5hpm0h81ta", user="subhmwvwkczboo", port="5432",
+                                   password="65dba2994e5e08ef80dbc1ae8275ca9abcd38af2d04cb830a2bb24171da45bad")
 
 
     def setup(self):
@@ -20,28 +20,11 @@ class DBHelper:
     # insert commands
     def insertRequest(self, chatID, request):
         self.cur = self.conn.cursor()
-        insertQuerry = "INSERT INTO requests (chatid, request) VALUES (%s, %s);"
-        data = (chatID, request,)
-        self.cur.execute(insertQuerry, data)
-        self.updateLastRequest(chatID, request)
-        self.conn.commit()
+        self.cur.callproc('inser_request', [chatID, request,])
 
-    def insertError(self, chatID, request, e):
+    def insertError(self, chatID, request, e):  # done
         self.cur = self.conn.cursor()
-        insertSQL = "INSERT INTO errors (chatID, request, error) VALUES( %s, %s, %s);"
-        data = (chatID, request, str(e),)
-        self.cur.execute(insertSQL, data)
-        self.conn.commit()
-        self.cur.close()
-
-    def add_item(self, item_text, owner):
-        self.cur = self.conn.cursor()
-        addSQL = "INSERT INTO items (description, owner) VALUES (%s, %s)"
-        data = (item_text, owner, )
-        self.cur.execute(addSQL, data)
-        self.conn.commit()
-        self.cur.close()
-
+        self.cur.callproc('insert_error', [chatID, request, e,])
 
     # select commands
     def selectAll(self):  # select all requests
@@ -106,21 +89,24 @@ class DBHelper:
 
     def get_items(self, owner):
         self.cur = self.conn.cursor()
-        getSQL = "SELECT description FROM items WHERE owner = (%)"
+        getSQL = "SELECT description FROM items WHERE owner = %s"
         data = (owner, )
         return [x[0] for x in self.cur.execute(getSQL, data)]
 
 
 def main():
-    db = DBHelper()
     #db.insertRequest('1','Inserted from local to heroku')
     #db.insertRequest('4', 'QQQQQqq')
     #db.insertRequest('5', 'WWWWW')
     #db.updateLastRequest(242215519, "updated")
     #db.insertError(1,"errror", "errrrr")
     #print("########")
-    db.selectAllLast()
+    #db.selectAllLast()
     #print(info)
+
+    db = DBHelper()
+    db.insertError(44, 'testing test', 'testing')
+    db.selectAllError()
 
 if __name__ == '__main__':
     main()
